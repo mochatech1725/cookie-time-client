@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build transpileDependencies=true",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
     "core-js": "^3.8.3",
+    "dotnet": "^1.1.4",
     "node-fetch": "^3.2.10",
     "roboto-fontface": "*",
     "vue": "^3.2.13",

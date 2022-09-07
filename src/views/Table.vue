@@ -18,7 +18,7 @@
                   <v-row v-for="(value, key) in editedItem " v-bind:key="key">
                     <v-col
                       cols="12" sm="6" md="4"
-                      v-if=" key !== 'id' && key !=='category' && key !='dateAdded' && key !=='product' && key !=='user' ">
+                      v-if=" key !== 'id' && key !=='product' && key !=='agent' ">
                       <v-text-field
                         :type =" key === 'quantity' || key === 'price' ? 'Number' : 'text' "
                         v-model="editedItem[key]"
@@ -90,7 +90,12 @@
   </template>
 
 <script>
-    import actions from "../components/actions";
+    import AgentService from '../services/agents.service.js';
+    import ProductService from '../services/product.service.js'
+    import OrderService from '../services/order.service.js'
+    import InventoryService from '../services/inventory.service.js'
+    import PaymentService from '../services/payment.service.js'
+    import CustomerService from '../services/customer.service.js'
     
     export default {
       name: "Table",
@@ -112,24 +117,148 @@
         this.initialize()
       },
         methods: {
-        async initialize() {
-            switch (this.$route.name) {
+          async initialize() {
+              switch (this.$route.name) {
+                  case "agents":
+                    this.initializeSalesAgent();
+                    const agents = await AgentService.getAgents();
+                    this.rows = agents;
+                  break
+                  case "customers":
+                    this.initializeCustomers();
+                    const csutomers = await CustomerService.getCustomers();
+                    this.rows = csutomers;
+                  break
+                  case "products":
+                    this.initializeProducts();
+                    const products = await ProductService.getProducts();
+                    this.rows = products;
+                  break
+                  case "inventory":
+                    this.initializeInventory();
+                    const inventory = await InventoryService.getInventory(undefined);
+                    this.rows = inventory;
+                  break
+                  case "orders":
+                    this.rows=[];
+                  break
+                  case "payments":
+                  this.rows=[];
+                  break
+              }
+          },
+          initializeSalesAgent() {
+            this.headers = [
+              { text: "id", value: "id" },
+              { text: "agent_id", value: "agent_id" },
+              { text: "first_name", value: "first_name" },
+              { text: "last_name", value: "last_name" },
+              { text: "created_at", value: "created_at" },
+              { text: "actions", value: "actions", sortable: false },
+            ];
+            this.editedItem = { agent_id:"", first_name: "", last_name: "", agent_id: "", created_at: ""}
+            this.defaultItem = { agent_id:"", first_name: "", last_name: "", agent_id: "", created_at: ""}
+          },
+          initializeCustomers() {
+            this.headers = [
+              { text: "id", value: "id" },
+              { text: "customer_id", value: "customer_id" },
+              { text: "first_name", value: "first_name" },
+              { text: "last_name", value: "last_name" },
+              { text: "address", value: "address" },
+              { text: "city", value: "city" },
+              { text: "state", value: "state" },
+              { text: "zipcode", value: "zipcode" },
+              { text: "created_at", value: "created_at" },
+              { text: "email_address", value: "email_address" },
+              { text: "phone_number", value: "phone_number" },
+              { text: "actions", value: "actions", sortable: false },
+            ];
+            this.editedItem = {customer_id: "",first_name: "", last_name: "", phone_number: ""}
+            this.defaultItem = {customer_id: "",first_name: "", last_name: "", phone_number: ""}
+          },
+          initializeProducts() {
+            this.headers = [
+              { text: "id", value: "id" },
+              { text: "product_id", value: "product_id" },
+              { text: "product_name", value: "product_name" },
+              { text: "product_price", value: "product_price" },
+              { text: "year_introduced", value: "year_introduced" },
+              { text: "actions", value: "actions", sortable: false },
+            ];
+            this.editedItem = { product_id:"", product_name: "", product_price: 0}
+            this.defaultItem = { product_id:"", product_name: "", product_price: 0}
+          },
+          editItem(item) {
+            this.editedIndex = this.rows.indexOf(item);
+            this.editedItem = Object.assign({}, item);
+            this.dialog = true;
+          },
+
+          close() {
+            this.dialog = false;
+            this.$nextTick(() => {
+            this.editedItem = Object.assign({}, this.defaultItem);
+            this.editedIndex = -1
+          });
+          },
+          async save() {
+            if (this.editedIndex > -1) {
+              switch (this.$route.name) {
                 case "agents":
-                break
+                  break
                 case "customers":
-                break
+                  break
                 case "products":
-                break
+                  break
                 case "inventory":
-                break
+                  break
                 case "orders":
-                break
-                case "payments":
-                break
-                case "reports":
-                break
+                  break
+              }
+            } else {
+              switch (this.$route.name) {
+                case "agents":
+                  break
+                case "customers":
+                  break
+                case "products":
+                  break
+                case "inventory":
+                  break
+                case "orders":
+                  break
+              }
             }
-        }
-     }
+            this.close()
+          },
+          // async deleteItem(item) {
+          //   const index = this.rows.indexOf(item)
+          //   const message = "Are you sure you want to delete this item?"
+
+          //   switch (this.$route.name) {
+          //     case "agents":
+          //       confirm(message) && (await actions.deleteUser(item.id)) &&
+          //       this.rows.splice(index,1)
+          //       break
+          //     case "customers":
+          //       confirm(message) && (await actions.deleteCategory(item.id)) &&
+          //       this.rows.splice(index, 1)
+          //       break
+          //     case "products":
+          //       confirm(message) && (await actions.deleteProduct(item.id)) &&
+          //       this.rows.splice(index, 1)
+          //       break
+          //     case "inventory":
+          //       confirm(message) && (await actions.deleteInventoryItem(item.id)) &&
+          //       this.rows.splice(index, 1)
+          //       break
+          //     case "orders":
+          //       confirm(message) && (await actions.deleteOrder(item.id)) &&
+          //       this.rows.splice(index, 1)
+          //       break
+          //   }
+          // }
+      }
     }
     </script>

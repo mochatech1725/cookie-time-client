@@ -44,7 +44,6 @@
         { path: "inventory", title: "Inventory", icon: "mdi-cog" },
         { path: "orders", title: "Orders", icon: "mdi-cog" },
         { path: "payments", title: "Payments", icon: "mdi-cog" },
-        { path: "reports", title: "Reports", icon: "mdi-cog" },
       ],
     }),
     created() {
