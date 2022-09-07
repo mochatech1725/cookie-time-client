@@ -1,0 +1,26 @@
+{
+    "customers": [
+        {
+            "customer_id": {"$oid": "631900f5af1292be1c04b2d7"},
+            "first_name": "Elastigirl",
+            "last_name": "Incredible",
+            "address": "555 Stretch Lane",
+            "city": "Cosmos",
+            "state": "CA",
+            "zipcode": "99999",
+            "email_address": "elastigirl@kickassqueen.com",
+            "phone_number": "555-55-5555"
+        },
+        {
+            "customer_id": {"$oid": "631900f5af1292be1c04b2d8"},
+            "first_name": "Nubian",
+            "last_name": "Greatness",
+            "address": "123 Chocolate Lane",
+            "city": "Wakanda",
+            "state": "CA",
+            "zipcode": "55555",
+            "email_address": "nubian@kickassqueen.com",
+            "phone_number": "123-45-6789"
+        }
+    ]
+}

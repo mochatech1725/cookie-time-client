@@ -1,0 +1,144 @@
+{
+    "customers": [
+        {
+            "customer_id": {"$oid": "631900f5af1292be1c04b2d7"},
+            "first_name": "Elastigirl",
+            "last_name": "Incredible",
+            "address": "555 Stretch Lane",
+            "city": "Cosmos",
+            "state": "CA",
+            "zipcode": "99999",
+            "email_address": "elastigirl@kickassqueen.com",
+            "phone_number": "555-55-5555"
+        },
+        {
+            "customer_id": {"$oid": "631900f5af1292be1c04b2d8"},
+            "first_name": "Nubian",
+            "last_name": "Greatness",
+            "address": "123 Chocolate Lane",
+            "city": "Wakanda",
+            "state": "CA",
+            "zipcode": "55555",
+            "email_address": "nubian@kickassqueen.com",
+            "phone_number": "123-45-6789"
+        }
+    ],
+    "inventory": {
+        "campaign_id": {"$oid": "631901e870fff299a91bc25a"},
+        "inventory_items": [{
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2cb"
+            },
+            "quantity": 0
+          },{
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2cd"
+            },
+            "quantity": 0
+          
+          },{
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2ce"
+            },
+            "quantity": 0
+          
+          },{
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2cf"
+            },
+            "quantity": 0
+          },{
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2d0"
+            },
+            "quantity": 0
+          },{
+            "product_name": "Lemonup",
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2d1"
+            },
+            "quantity": 0
+          },{
+            "product_name": "Smores",
+            "product_id": {
+              "$oid": "6318f6afaf1292be1c04b2d2"
+            }
+          },{
+            "product_name": "ToffeeTastic",
+            "product_id": {
+              "$oid": "631900f5af1292be1c04b2d3"
+            }
+          },{
+            "product_id": {
+              "$oid": "631900f5af1292be1c04b2d4"
+            },
+            "quantity": 0
+          },{
+            "product_id": {
+              "$oid": "631900f5af1292be1c04b2d5"
+            },
+            "quantity": 0
+          }]
+    },
+    "products": [{
+        "product_name": "Trefoil",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2cb"
+        },
+        "quantity": 0
+      },{
+        "product_name": "Dosido",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2cd"
+        },
+        "quantity": 0
+      
+      },{
+        "product_name": "Thinmint",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2ce"
+        },
+        "quantity": 0
+      
+      },{
+        "product_name": "Samoa",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2cf"
+        },
+        "quantity": 0
+      },{
+        "product_name": "Tagalong",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2d0"
+        },
+        "quantity": 0
+      },{
+        "product_name": "Lemonup",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2d1"
+        },
+        "quantity": 0
+      },{
+        "product_name": "Smores",
+        "product_id": {
+          "$oid": "6318f6afaf1292be1c04b2d2"
+        }
+      },{
+        "product_name": "ToffeeTastic",
+        "product_id": {
+          "$oid": "631900f5af1292be1c04b2d3"
+        }
+      },{
+        "product_name": "Adventureful",
+        "product_id": {
+          "$oid": "631900f5af1292be1c04b2d4"
+        },
+        "quantity": 0
+      },{
+        "product_name": "RaspberryRally",
+        "product_id": {
+          "$oid": "631900f5af1292be1c04b2d5"
+        },
+        "quantity": 0
+      }]      
+}
