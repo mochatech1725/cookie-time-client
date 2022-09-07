@@ -90,15 +90,15 @@
   </template>
 
 <script>
-    import AgentService from '../services/agents.service.js';
-    import ProductService from '../services/product.service.js'
-    import OrderService from '../services/order.service.js'
-    import InventoryService from '../services/inventory.service.js'
-    import PaymentService from '../services/payment.service.js'
-    import CustomerService from '../services/customer.service.js'
+    import { AgentService } from '../services/agent.service.js';
+    import { ProductService } from '../services/product.service.js'
+    import { InventoryService } from '../services/inventory.service.js'
+    import { CustomerService } from '../services/customer.service.js'
+    // import { OrderService } from '../services/order.service.js'
+    // import { PaymentService } from '../services/payment.service.js'
     
     export default {
-      name: "Table",
+      name: "TableView",
       data: () => ({
         dialog: false,
         headers: [],
@@ -121,23 +121,19 @@
               switch (this.$route.name) {
                   case "agents":
                     this.initializeSalesAgent();
-                    const agents = await AgentService.getAgents();
-                    this.rows = agents;
+                    this.rows =  await AgentService.getAgents();
                   break
                   case "customers":
                     this.initializeCustomers();
-                    const csutomers = await CustomerService.getCustomers();
-                    this.rows = csutomers;
+                    this.rows = await CustomerService.getCustomers();
                   break
                   case "products":
                     this.initializeProducts();
-                    const products = await ProductService.getProducts();
-                    this.rows = products;
+                    this.rows = await ProductService.getProducts();
                   break
                   case "inventory":
                     this.initializeInventory();
-                    const inventory = await InventoryService.getInventory(undefined);
-                    this.rows = inventory;
+                    this.rows = await InventoryService.getInventory(undefined);
                   break
                   case "orders":
                     this.rows=[];
@@ -156,8 +152,8 @@
               { text: "created_at", value: "created_at" },
               { text: "actions", value: "actions", sortable: false },
             ];
-            this.editedItem = { agent_id:"", first_name: "", last_name: "", agent_id: "", created_at: ""}
-            this.defaultItem = { agent_id:"", first_name: "", last_name: "", agent_id: "", created_at: ""}
+            this.editedItem = { agent_id:"", first_name: "", last_name: ""}
+            this.defaultItem = { agent_id:"", first_name: "", last_name: ""}
           },
           initializeCustomers() {
             this.headers = [
