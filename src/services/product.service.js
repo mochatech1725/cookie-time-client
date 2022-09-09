@@ -7,7 +7,7 @@ export class ProductService {
    static async addProduct(product_name, product_price) {
       return axios.get(`${SERVER_BASE_URL}/product/add?product_name=${product_name}&product_price=${product_price}`)
        .then(response => {
-          console.log(response);
+         return response?.results?.data;
        }).catch(err => {
           console.log(err);
           return [];
@@ -17,7 +17,8 @@ export class ProductService {
     static async getProducts() {
         return axios.get(`${SERVER_BASE_URL}/product/get_products`)
          .then(response => {
-            console.log(response);
+            console.log('response=', response)
+            return response?.data;
          }).catch(err => {
             console.log(err);
             return [];

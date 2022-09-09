@@ -14,12 +14,12 @@
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-toolbar-title>{{appTitle}}</v-toolbar-title>
+            <v-btn text class="hidden-sm-and-down" :to=" {name: 'products'}">Products</v-btn>
+            <v-btn text class="hidden-sm-and-down" :to=" {name: 'orders'}">Orders</v-btn>
+            <v-btn text class="hidden-sm-and-down" :to=" {name: 'customers'}">Customers</v-btn>
+            <v-btn text class="hidden-sm-and-down" :to=" {name: 'inventory'}">Inventory</v-btn>
+            <v-btn text class="hidden-sm-and-down" :to=" {name: 'payments'}">Payments</v-btn>
             <v-btn text class="hidden-sm-and-down" :to=" {name: 'agents'}">Agents</v-btn>
-            <v-btn text class="hidden-sm-and-down">Customers</v-btn>
-            <v-btn text class="hidden-sm-and-down">Products</v-btn>
-            <v-btn text class="hidden-sm-and-down">Inventory</v-btn>
-            <v-btn text class="hidden-sm-and-down">Orders</v-btn>
-            <v-btn text class="hidden-sm-and-down">Payments</v-btn>
         </v-app-bar>
     </span>
 </template>

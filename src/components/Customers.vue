@@ -3,7 +3,7 @@
     <v-data-table
       :headers="headers"
       :items="rows"
-      sort-by="product_name"
+      sort-by="first_name"
       class="elevation-1"
     >
       <template v-slot:top>
@@ -26,16 +26,31 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_id" label="Product ID" ></v-text-field>
+                      <v-text-field v-model="editedItem.customer_id" label="Customer ID" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_name" label="Product Name" ></v-text-field>
+                      <v-text-field v-model="editedItem.first_name" label="First Name" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_price" label="Price" ></v-text-field>
+                      <v-text-field v-model="editedItem.last_name" label="Last Name" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.year_introduced" label="Year" ></v-text-field>
+                      <v-text-field v-model="editedItem.address" label="Address" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.city" label="City" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.state" label="ST" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.zipcode" label="Zipcode" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.email_address" label="Email" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.phone_number" label="Phone" ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -82,17 +97,22 @@
   </template>
   
   <script>
-      import { ProductService } from '../services/product.service.js';
+      import { CustomerService } from '../services/customer.service.js';
   
       export default {
         data: () => ({
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Product Id", value: "product_id" },
-                { text: "Product Name", value: "product_name" },
-                { text: "Product Price", value: "product_price" },
-                { text: "Year", value: "year_introduced" },
+                { text: "Customer Id", value: "customer_id" },
+                { text: "First Name", value: "first_name" },
+                { text: "Last Name", value: "last_name" },
+                { text: "Address", value: "address" },
+                { text: "City", value: "city" },
+                { text: "ST", value: "state" },
+                { text: "Zipcode", value: "zipcode" },
+                { text: "Email", value: "email_address" },
+                { text: "Phone", value: "phone_number" },
                 { text: "Actions", value: "actions", sortable: false },
           ],
           rows: [],
@@ -128,7 +148,7 @@
     
         methods: {
           async initialize () {
-              this.rows =  await ProductService.getProducts();
+              this.rows =  await CustomerService.getCustomers();
               console.log(this.rows);
           },
     
