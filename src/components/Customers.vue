@@ -8,7 +8,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat >
-          <v-toolbar-title>Girl Scout Cookie Manager</v-toolbar-title>
+          <v-toolbar-title>Customers</v-toolbar-title>
           <v-divider class="mx-4" inset vertical ></v-divider>
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
@@ -119,11 +119,23 @@
           editedIndex: -1,
           editedItem: {
             first_name: '',
-            last_name: ''
+            last_name: '',
+            address: '',
+            city: '',
+            state: '',
+            zipcode: '',
+            email_address: '',
+            phone_number: '',
           },
           defaultItem: {
             first_name: '',
-            last_name: ''
+            last_name: '',
+            address: '',
+            city: '',
+            state: '',
+            zipcode: '',
+            email_address: '',
+            phone_number: '',
           },
         }),
     
