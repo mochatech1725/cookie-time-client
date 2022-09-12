@@ -4,7 +4,7 @@
     :headers="headers"
     :items="rows"
     sort-by="last_name"
-    class="elevation-1"
+    class="elevation-1 mytable"
   >
     <template v-slot:top>
       <v-toolbar flat >
@@ -14,7 +14,7 @@
         <v-dialog v-model="dialog" max-width="500px" >
           <template v-slot:activator="{ on, attrs }">
             <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" >
-              New Item
+              New Agent
             </v-btn>
           </template>
           <v-card>
@@ -26,7 +26,7 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4" >
-                    <v-text-field v-model="editedItem.id" label="Id" ></v-text-field>
+                    <v-text-field v-model="editedItem._id" label="Id" ></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4" >
                     <v-text-field v-model="editedItem.first_name" label="First Name" ></v-text-field>
@@ -91,10 +91,10 @@
         dialog: false,
         dialogDelete: false,
         headers: [
-              { text: "Id", value: "id" },
-              { text: "Agent Id", value: "agent_id" },
-              { text: "First Name", value: "first_name" },
-              { text: "Last Name", value: "last_name" },
+              { text: "Id", value: "_id", width:"10%"},
+              { text: "Agent Id", value: "agent_id", width:"10%" },
+              { text: "First Name", value: "first_name", width:"40%" },
+              { text: "Last Name", value: "last_name", width:"40%" },
               { text: "Actions", value: "actions", sortable: false },
         ],
         rows: [],
@@ -111,7 +111,7 @@
   
       computed: {
         formTitle () {
-          return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+          return this.editedIndex === -1 ? 'New Agent' : 'Edit Agent'
         },
       },
   
@@ -131,7 +131,7 @@
       methods: {
         async initialize () {
             this.rows =  await AgentService.getAgents();
-            console.log('Agent rows=', this.rows);
+            // console.log('Agent rows=', this.rows);
         },
   
         editItem (item) {
@@ -167,9 +167,12 @@
           })
         },
   
-        save () {
+        async save () {
           if (this.editedIndex > -1) {
-            Object.assign(this.rows[this.editedIndex], this.editedItem)
+            Object.assign(this.rows[this.editedIndex], this.editedItem);
+            console.log(this.editedItem);
+            await AgentService.addAgent(this.editedItem.first_name, this.editedItem.last_name);
+
           } else {
             this.rows.push(this.editedItem)
           }
@@ -178,3 +181,15 @@
       },
     }
   </script>
+
+  
+<style>
+  .mytable table tr {
+      background-color: rgb(214, 233, 218);
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+  }
+
+</style>

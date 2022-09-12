@@ -4,18 +4,16 @@
       :headers="headers"
       :items="rows"
       sort-by="product_name"
-      class="elevation-1"
+      class="elevation-1 mytable"
     >
-      <template v-slot:top>
+      <template v-slot:top >
         <v-toolbar flat >
           <v-toolbar-title>Products</v-toolbar-title>
           <v-divider class="mx-4" inset vertical ></v-divider>
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" >
-                New Item
-              </v-btn>
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Order </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -26,10 +24,10 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_id" label="Product ID" ></v-text-field>
+                      <v-img  label="Icon"  :src="require('../assets/product-images/Dosido.png')"  style="width: 50px; height: 50px" ></v-img>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_name" label="Product Name" ></v-text-field>
+                      <v-text-field v-model="editedItem.product_name" label="Product Name"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
                       <v-text-field v-model="editedItem.product_price" label="Price" ></v-text-field>
@@ -43,12 +41,8 @@
   
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="close" >
-                  Cancel
-                </v-btn>
-                <v-btn color="blue darken-1" text @click="save" >
-                  Save
-                </v-btn>
+                <v-btn color="blue darken-1" text @click="close" > Cancel </v-btn>
+                <v-btn color="blue darken-1" text @click="save" > Save </v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -89,21 +83,21 @@
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Product Id", value: "product_id" },
-                { text: "Product Name", value: "product_name" },
-                { text: "Product Price", value: "product_price" },
-                { text: "Year", value: "year_introduced" },
+                { text: "Icon", value: "product_image", width:"15%",  sortable: false},
+                { text: "Product Name", value: "product_name", width:"20%" },
+                { text: "Price", value: "product_price", width:"5%" },
+                { text: "Year", value: "year_introduced", width:"5%" },
                 { text: "Actions", value: "actions", sortable: false },
           ],
           rows: [],
           editedIndex: -1,
           editedItem: {
             product_name: '',
-            product_price: 7,
+            product_price: 6,
           },
           defaultItem: {
             product_name: '',
-            product_price: 7,
+            product_price: 6,
           },
         }),
     
@@ -129,9 +123,11 @@
         methods: {
           async initialize () {
               this.rows =  await ProductService.getProducts();
-              console.log(this.rows);
+              this.rows.forEach(row => {
+                row.product_image = `${row.product_name}.png`
+              })
+              //console.log(this.rows);
           },
-    
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)
@@ -176,3 +172,16 @@
         },
       }
     </script>
+
+
+<style>
+  .mytable table tr {
+      background-color: rgb(214, 233, 218);
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+  }
+
+</style>
+

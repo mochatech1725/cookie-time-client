@@ -4,7 +4,7 @@
       :headers="headers"
       :items="rows"
       sort-by="first_name"
-      class="elevation-1"
+      class="elevation-1 mytable" 
     >
       <template v-slot:top>
         <v-toolbar flat >
@@ -13,9 +13,7 @@
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" >
-                New Item
-              </v-btn>
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Customer </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -104,15 +102,15 @@
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Customer Id", value: "customer_id" },
-                { text: "First Name", value: "first_name" },
-                { text: "Last Name", value: "last_name" },
-                { text: "Address", value: "address" },
-                { text: "City", value: "city" },
-                { text: "ST", value: "state" },
-                { text: "Zipcode", value: "zipcode" },
-                { text: "Email", value: "email_address" },
-                { text: "Phone", value: "phone_number" },
+                { text: "Customer Id", value: "customer_id", width:"3%" },
+                { text: "First Name", value: "first_name", width:"15%" },
+                { text: "Last Name", value: "last_name", width:"15%" },
+                { text: "Address", value: "address", width:"15%" },
+                { text: "City", value: "city", width:"10%" },
+                { text: "ST", value: "state", width:"2%" },
+                { text: "Zipcode", value: "zipcode", width:"2%" },
+                { text: "Email", value: "email_address", width:"10%" },
+                { text: "Phone", value: "phone_number", width:"10%" },
                 { text: "Actions", value: "actions", sortable: false },
           ],
           rows: [],
@@ -141,7 +139,7 @@
     
         computed: {
           formTitle () {
-            return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+            return this.editedIndex === -1 ? 'New Customer' : 'Edit Customer'
           },
         },
     
@@ -208,3 +206,14 @@
         },
       }
     </script>
+
+    <style>
+      .mytable table tr {
+          background-color: rgb(214, 233, 218);
+      }
+
+      tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, .05);
+      }
+
+    </style>
