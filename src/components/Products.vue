@@ -24,7 +24,7 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-img  label="Icon"  :src="require('../assets/product-images/Dosido.png')"  style="width: 50px; height: 50px" ></v-img>
+                      <v-img  label="Icon"  :src="editedItem.product_name"  style="width: 50px; height: 50px" ></v-img>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
                       <v-text-field v-model="editedItem.product_name" label="Product Name"></v-text-field>
@@ -124,7 +124,7 @@
           async initialize () {
               this.rows =  await ProductService.getProducts();
               this.rows.forEach(row => {
-                row.product_image = `${row.product_name}.png`
+                row.product_image = `../assets/product-images/${row.product_name}.png`
               })
               //console.log(this.rows);
           },
