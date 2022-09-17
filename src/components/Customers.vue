@@ -195,11 +195,15 @@
             })
           },
     
-          save () {
+          async save () {
             if (this.editedIndex > -1) {
               Object.assign(this.rows[this.editedIndex], this.editedItem)
             } else {
+              const data = await CustomerService.addCustomer(this.editedItem);
+              console.log(data);
+              this.editItem.customer_id=data.customer_id;
               this.rows.push(this.editedItem)
+
             }
             this.close()
           },

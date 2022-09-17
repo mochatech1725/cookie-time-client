@@ -11,7 +11,7 @@
             </v-list>
         </v-navigation-drawer>
         <v-app-bar color="green darken-2">
-            <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
+            <!-- <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon> -->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-toolbar-title>{{appTitle}}</v-toolbar-title>
             <v-btn text class="hidden-sm-and-down" :to=" {name: 'products'}">Products</v-btn>
