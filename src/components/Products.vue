@@ -63,6 +63,10 @@
           
         </v-toolbar>
       </template>
+      <template v-slot:[`item.product_image`]="{ item }">
+          <img :src="require('../assets/product-images/' + item.product_image)" style="width: 50px; height: 50px">
+      </template>
+               
       <template v-slot:[`item.actions`]="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)" > mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)" > mdi-delete </v-icon>
