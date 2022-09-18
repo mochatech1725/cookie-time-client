@@ -11,21 +11,21 @@
           <v-toolbar-title>Products</v-toolbar-title>
           <v-divider class="mx-4" inset vertical ></v-divider>
            <v-spacer></v-spacer>
+
           <v-dialog v-model="dialog" max-width="500px" >
+            
             <template v-slot:activator="{ on, attrs }">
               <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Product </v-btn>
             </template>
+
             <v-card>
               <v-card-title>
                 <span class="text-h5">{{ formTitle }}</span>
               </v-card-title>
-  
+
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="6" md="4" >>
-                        <img src= "`@/assets/product-images/${editedItem.product_image}`" :alt="editedItem.product_name" style="width: 100px; height: 100px" />
-                    </v-col>
                     <v-col cols="12" sm="6" md="4" >
                       <v-text-field v-model="editedItem.product_name" label="Product Name"></v-text-field>
                     </v-col>
@@ -44,8 +44,11 @@
                 <v-btn color="blue darken-1" text @click="close" > Cancel </v-btn>
                 <v-btn color="blue darken-1" text @click="save" > Save </v-btn>
               </v-card-actions>
+
             </v-card>
+
           </v-dialog>
+
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
@@ -57,6 +60,7 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
+          
         </v-toolbar>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
@@ -78,7 +82,7 @@
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Icon", width:"15%",  sortable: false},
+                { text: "Icon", width:"15%", value:"product_image", sortable: false},
                 { text: "Product Name", value: "product_name", width:"20%" },
                 { text: "Price", value: "product_price", width:"5%" },
                 { text: "Year", value: "year_introduced", width:"5%" },
@@ -118,7 +122,7 @@
           async initialize () {
               this.rows =  await ProductService.getProducts();
               // this.rows.forEach(row => {
-              //   row.img =  `@/assets/product-images/${row.product_image}`
+              //   row.img =  require(`@/assets/product-images/${row.product_image}`)
               // })
           },
           // imgPath(product_name) {
