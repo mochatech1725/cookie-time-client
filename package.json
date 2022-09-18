@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.19.0",
-    "@mdi/font": "5.9.55",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "roboto-fontface": "*",
@@ -23,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@mdi/font": "^7.0.96",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",

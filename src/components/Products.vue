@@ -90,7 +90,7 @@
                 { text: "Product Name", value: "product_name", width:"20%" },
                 { text: "Price", value: "product_price", width:"5%" },
                 { text: "Year", value: "year_introduced", width:"5%" },
-                { text: "Actions", value: "actions", sortable: false },
+                { text: "Actions", value: "actions", sortable: false, width:"5%"},
           ],
           rows: [],
           editedIndex: -1,
