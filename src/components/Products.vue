@@ -13,7 +13,7 @@
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Order </v-btn>
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Product </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -23,8 +23,8 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="6" md="4" >
-                      <v-img  label="Icon"  :src="editedItem.product_name"  style="width: 50px; height: 50px" ></v-img>
+                    <v-col cols="12" sm="6" md="4" >>
+                        <img src= "`@/assets/product-images/${editedItem.product_image}`" :alt="editedItem.product_name" style="width: 100px; height: 100px" />
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
                       <v-text-field v-model="editedItem.product_name" label="Product Name"></v-text-field>
@@ -60,30 +60,25 @@
         </v-toolbar>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
-        <v-icon small class="mr-2" @click="editItem(item)" >
-          mdi-pencil
-        </v-icon>
-        <v-icon small @click="deleteItem(item)" >
-          mdi-delete
-        </v-icon>
+        <v-icon small class="mr-2" @click="editItem(item)" > mdi-pencil </v-icon>
+        <v-icon small @click="deleteItem(item)" > mdi-delete </v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize" >
-          Reset
-        </v-btn>
+        <v-btn color="primary" @click="initialize" > Reset </v-btn>
       </template>
     </v-data-table>
   </template>
   
   <script>
-      import { ProductService } from '../services/product.service.js';
-  
+
+    import { ProductService } from '../services/product.service.js';
+
       export default {
         data: () => ({
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Icon", value: "product_image", width:"15%",  sortable: false},
+                { text: "Icon", width:"15%",  sortable: false},
                 { text: "Product Name", value: "product_name", width:"20%" },
                 { text: "Price", value: "product_price", width:"5%" },
                 { text: "Year", value: "year_introduced", width:"5%" },
@@ -100,11 +95,10 @@
             product_price: 6,
           },
         }),
-    
         computed: {
           formTitle () {
             return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-          },
+          }
         },
     
         watch: {
@@ -123,11 +117,16 @@
         methods: {
           async initialize () {
               this.rows =  await ProductService.getProducts();
-              this.rows.forEach(row => {
-                row.product_image = `../assets/product-images/${row.product_name}.png`
-              })
-              //console.log(this.rows);
+              // this.rows.forEach(row => {
+              //   row.img =  `@/assets/product-images/${row.product_image}`
+              // })
           },
+          // imgPath(product_name) {
+          //   // return require(`../assets/product-images/${item.product_name}.png`)
+          //   const path =  `../assets/product-images/${product_name}.png`;
+          //   console.log('*** DEBUG path=', path)
+          //   return path;
+          // },
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)
