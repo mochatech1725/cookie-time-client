@@ -125,16 +125,7 @@
         methods: {
           async initialize () {
               this.rows =  await ProductService.getProducts();
-              // this.rows.forEach(row => {
-              //   row.img =  require(`@/assets/product-images/${row.product_image}`)
-              // })
           },
-          // imgPath(product_name) {
-          //   // return require(`../assets/product-images/${item.product_name}.png`)
-          //   const path =  `../assets/product-images/${product_name}.png`;
-          //   console.log('*** DEBUG path=', path)
-          //   return path;
-          // },
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)

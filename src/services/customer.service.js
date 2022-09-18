@@ -23,4 +23,14 @@ export class CustomerService {
             return [];
          } );
     }
+
+    static async deleteCustomer(customer_id) {
+      return axios.get(`${SERVER_BASE_URL}/customer/delete?customer_id=${customer_id}`)
+       .then(response => {
+          return response?.data;
+       }).catch(err => {
+          console.log(err);
+          return undefined;
+       } );
+  }
 }

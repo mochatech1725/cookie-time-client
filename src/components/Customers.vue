@@ -24,9 +24,6 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.customer_id" label="Customer ID" ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" >
                       <v-text-field v-model="editedItem.first_name" label="First Name" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
@@ -107,8 +104,8 @@
                 { text: "Last Name", value: "last_name", width:"15%" },
                 { text: "Address", value: "address", width:"15%" },
                 { text: "City", value: "city", width:"10%" },
-                { text: "ST", value: "state", width:"2%" },
-                { text: "Zipcode", value: "zipcode", width:"2%" },
+                { text: "State", value: "state", width:"5%" },
+                { text: "Zipcode", value: "zipcode", width:"5%" },
                 { text: "Email", value: "email_address", width:"10%" },
                 { text: "Phone", value: "phone_number", width:"10%" },
                 { text: "Actions", value: "actions", sortable: false },
@@ -174,7 +171,9 @@
             this.dialogDelete = true
           },
     
-          deleteItemConfirm () {
+          async deleteItemConfirm () {
+            const data = await CustomerService.deleteCustomer(this.editedItem.customer_id);
+            console.log(data);
             this.rows.splice(this.editedIndex, 1)
             this.closeDelete()
           },
@@ -202,8 +201,8 @@
               const data = await CustomerService.addCustomer(this.editedItem);
               console.log(data);
               this.editItem.customer_id=data.customer_id;
-              this.rows.push(this.editedItem)
-
+              this.rows.push(this.editedItem);
+              //this.$parent.refresh();
             }
             this.close()
           },
