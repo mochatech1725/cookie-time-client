@@ -28,7 +28,7 @@ export class AgentService
     }
 
     static async addAgent(first_name, last_name) {
-        return axios.get(`${SERVER_BASE_URL}/agent/addfirst_name=${first_name}&last_name=${last_name}`)
+        return axios.get(`${SERVER_BASE_URL}/agent/add?first_name=${first_name}&last_name=${last_name}`)
          .then(response => {
             return response?.data;
          }).catch(err => {

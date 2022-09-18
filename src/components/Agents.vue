@@ -26,19 +26,11 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4" >
-                    <v-text-field v-model="editedItem._id" label="Id" ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4" >
                     <v-text-field v-model="editedItem.first_name" label="First Name" ></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4" >
                     <v-text-field v-model="editedItem.last_name" label="Last Name" ></v-text-field>
                   </v-col>
- 
-                  <v-col cols="12" sm="6" md="4" >
-                    <v-text-field v-model="editedItem.agent_id" label="Agent Id" ></v-text-field>
-                  </v-col>
-
                 </v-row>
               </v-container>
             </v-card-text>
@@ -91,7 +83,6 @@
         dialog: false,
         dialogDelete: false,
         headers: [
-              { text: "Id", value: "_id", width:"10%"},
               { text: "Agent Id", value: "agent_id", width:"10%" },
               { text: "First Name", value: "first_name", width:"40%" },
               { text: "Last Name", value: "last_name", width:"40%" },
@@ -171,8 +162,8 @@
           if (this.editedIndex > -1) {
             Object.assign(this.rows[this.editedIndex], this.editedItem);
             console.log(this.editedItem);
-            await AgentService.addAgent(this.editedItem.first_name, this.editedItem.last_name);
-
+            const doc = await AgentService.addAgent(this.editedItem.first_name, this.editedItem.last_name);
+            this.editedItem.agent_id = doc.agent_id;
           } else {
             this.rows.push(this.editedItem)
           }
