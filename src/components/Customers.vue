@@ -36,7 +36,7 @@
                       <v-text-field v-model="editedItem.city" label="City" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.state" label="ST" ></v-text-field>
+                      <v-text-field v-model="editedItem.state" label="State" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
                       <v-text-field v-model="editedItem.zipcode" label="Zipcode" ></v-text-field>

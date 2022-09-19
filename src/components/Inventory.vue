@@ -8,7 +8,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat >
-          <v-toolbar-title>Inventory</v-toolbar-title>
+          <v-toolbar-title>Product Inventory</v-toolbar-title>
           <v-divider class="mx-4" inset vertical ></v-divider>
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
@@ -26,16 +26,37 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.order_date" label="Order Date" ></v-text-field>
+                      <v-text-field v-model="editedItem.campaign_id" label="Campaign Id"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.campaign_id" label="Campaign Id" ></v-text-field>
+                      <v-text-field v-model="editedItem.thinmint" label="tm" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.agent_id" label="Agent Id" ></v-text-field>
+                      <v-text-field v-model="editedItem.trefoil" label="tf" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.order_items" label="Order Items" ></v-text-field>
+                      <v-text-field v-model="editedItem.samoa" label="sa" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.dosido" label="dd" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.tagalong" label="ta" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.lemonup" label="lu" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.toffee_tastic" label="tt" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.smores" label="sm" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.adventureful" label="ad" ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" >
+                      <v-text-field v-model="editedItem.raspberry_rally" label="rr" ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -82,7 +103,7 @@
   </template>
   
   <script> 
-     //import { InventoryService } from '../services/inventory.service.js';
+     import { ProductInventoryService } from '../services/product_inventory.service.js';
   
       export default {
         data: () => ({
@@ -90,9 +111,16 @@
           dialogDelete: false,
           headers: [
                 { text: "Campaign", value: "campaign_id" },
-                { text: "Agent Id", value: "agent_id" },
-                { text: "Order Date", value: "order_date" },
-                { text: "Order Items", value: "order_items" },
+                { text: "TM", value: "thinmint" },
+                { text: "TF", value: "trefoil" },
+                { text: "SA", value: "samoa" },
+                { text: "DD", value: "dosido" },
+                { text: "TA", value: "tagalong" },
+                { text: "LU", value: "lemonup" },
+                { text: "TT", value: "toffee_tastic" },
+                { text: "SM", value: "smores" },
+                { text: "AD", value: "adventureful" },
+                { text: "RR", value: "raspberry_rally" },
                 { text: "Actions", value: "actions", sortable: false },
           ],
           rows: [],
@@ -107,7 +135,7 @@
     
         computed: {
           formTitle () {
-            return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+            return this.editedIndex === -1 ? 'New Inventory' : 'Edit Inventory'
           },
         },
     
@@ -126,7 +154,7 @@
     
         methods: {
           async initialize () {
-            //this.rows =  await InventoryService.getInventory();
+            this.rows =  await ProductInventoryService.getInventory();
           },
     
           editItem (item) {
@@ -162,10 +190,12 @@
             })
           },
     
-          save () {
+          async save () {
             if (this.editedIndex > -1) {
-              Object.assign(this.rows[this.editedIndex], this.editedItem)
+              Object.assign(this.rows[this.editedIndex], this.editedItem);
+              await ProductInventoryService.updateInventoryOrder(this.editedItem);
             } else {
+              await ProductInventoryService.createInventoryOrder(this.editedItem);
               this.rows.push(this.editedItem)
             }
             this.close()
