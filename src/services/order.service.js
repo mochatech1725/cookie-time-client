@@ -14,7 +14,17 @@ export class OrderService {
    }
 
    static async updateCustomerOrder(record) {
-      return axios.get(`${SERVER_BASE_URL}/customer_order/add?campaign_id=${record.campaign_id}&customer_id=${record.customer_id}&order_source=${record.order_source}&campaign_id=${record.campaign_id}&thinmint=${record.thinmint}&trefoil=${record.trefoil}&samoa=${record.samoa}&dosido=${record.dosido}&tagalong=${record.tagalong}&lemonup=${record.lemonup}&toffee_tastic=${record.toffee_tastic}&smores=${record.smores}&adventureful=${record.adventureful}&raspberry_rally=${record.raspberry_rally}}`)
+      return axios.get(`${SERVER_BASE_URL}/customer_order/update?campaign_id=${record.campaign_id}&customer_id=${record.customer_id}&order_id=${record.order_id}&order_source=${record.order_source}&thinmint=${record.thinmint}&trefoil=${record.trefoil}&samoa=${record.samoa}&dosido=${record.dosido}&tagalong=${record.tagalong}&lemonup=${record.lemonup}&toffee_tastic=${record.toffee_tastic}&smores=${record.smores}&adventureful=${record.adventureful}&raspberry_rally=${record.raspberry_rally}}`)
+       .then(response => {
+         return response?.data;
+       }).catch(err => {
+          console.log(err);
+          return [];
+       } );
+   }
+
+   static async deleteCustomerOrder(order_id, customer_id) {
+      return axios.get(`${SERVER_BASE_URL}/customer_order/delete?order_id=${order_id}&customer_id=${customer_id}}`)
        .then(response => {
          return response?.data;
        }).catch(err => {
@@ -41,5 +51,5 @@ export class OrderService {
           console.log(err);
           return [];
        } );
-  }
+   }
 }

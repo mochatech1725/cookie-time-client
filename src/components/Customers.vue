@@ -197,6 +197,8 @@
           async save () {
             if (this.editedIndex > -1) {
               Object.assign(this.rows[this.editedIndex], this.editedItem)
+              await CustomerService.updateCustomer(this.editedItem);
+
             } else {
               const data = await CustomerService.addCustomer(this.editedItem);
               console.log(data);

@@ -4,7 +4,7 @@
       :headers="headers"
       :items="rows"
       sort-by="payment_id"
-      class="elevation-1"
+      class="elevation-1 mytable"
     >
       <template v-slot:top>
         <v-toolbar flat >
@@ -191,3 +191,14 @@
         },
       }
     </script>
+
+<style>
+  .mytable table tr {
+      background-color: rgb(214, 233, 218);
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+  }
+
+</style>

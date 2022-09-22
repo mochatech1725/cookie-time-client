@@ -122,7 +122,6 @@
       methods: {
         async initialize () {
             this.rows =  await AgentService.getAgents();
-            // console.log('Agent rows=', this.rows);
         },
   
         editItem (item) {
@@ -161,10 +160,11 @@
         async save () {
           if (this.editedIndex > -1) {
             Object.assign(this.rows[this.editedIndex], this.editedItem);
-            console.log(this.editedItem);
+            await AgentService.updateAgent(this.editedItem.first_name, this.editedItem.last_name);
+
+          } else {
             const doc = await AgentService.addAgent(this.editedItem.first_name, this.editedItem.last_name);
             this.editedItem.agent_id = doc.agent_id;
-          } else {
             this.rows.push(this.editedItem)
           }
           this.close()

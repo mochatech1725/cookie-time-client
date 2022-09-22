@@ -4,7 +4,7 @@
       :headers="headers"
       :items="rows"
       sort-by="order_id"
-      class="elevation-1"
+      class="elevation-1 mytable"
     >
       <template v-slot:top>
         <v-toolbar flat >
@@ -184,7 +184,9 @@
             this.dialogDelete = true
           },
     
-          deleteItemConfirm () {
+          async deleteItemConfirm () {
+            const data = await OrderService.deleteCustomerOrder(this.editedItem.order_id, this.editedItem.customer_id);
+            console.log(data);
             this.rows.splice(this.editedIndex, 1)
             this.closeDelete()
           },
@@ -218,3 +220,14 @@
         },
       }
     </script>
+
+<style>
+  .mytable table tr {
+      background-color: rgb(214, 233, 218);
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+  }
+
+</style>
