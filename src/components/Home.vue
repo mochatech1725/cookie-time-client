@@ -15,7 +15,7 @@
   
   <style scoped>
   .home-hero {
-    background: url('../assets/cookie_images.png');
+    background: url('../assets/rasprallybg.jpeg');
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
