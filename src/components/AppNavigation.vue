@@ -18,7 +18,8 @@
             <v-spacer class="hidden-md-and-up"></v-spacer>
 
             <v-layout justify-end row wrap>
-                <v-toolbar-items class="hidden-sm-and-down elevation-2">
+                <v-toolbar-items class="elevation-2">
+                    <v-btn text color="white" :to=" {name: 'home'}">Home</v-btn>
                     <v-btn text color="white" :to=" {name: 'products'}">Products</v-btn>
                     <v-btn text color="white"  :to=" {name: 'customers'}">Customers</v-btn>
                     <v-btn text color="white" :to=" {name: 'orders'}">Orders</v-btn>

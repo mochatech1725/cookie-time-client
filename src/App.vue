@@ -2,8 +2,9 @@
   <v-app id="app">
       <app-navigation></app-navigation>
 
-      <v-main transition="slide-x-transition">
+      <v-main fluid>
           <router-view></router-view>
+          
       </v-main>
 
   </v-app>
