@@ -167,10 +167,11 @@
             } else {
               const data = await ProductService.updateProduct(this.editedItem);
               console.log(data)
-              this.editedItem.product_id=data.product_id
               this.rows.push(this.editedItem)
             }
-            this.close()
+            this.close();
+            await this.initialize();
+            this.$parent.refresh();
           },
         },
       }

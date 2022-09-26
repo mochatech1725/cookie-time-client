@@ -180,13 +180,15 @@
             })
           },
     
-          save () {
+          async save () {
             if (this.editedIndex > -1) {
               Object.assign(this.rows[this.editedIndex], this.editedItem)
             } else {
               this.rows.push(this.editedItem)
             }
-            this.close()
+            this.close();
+            await this.initialize();
+            this.$parent.refresh();
           },
         },
       }

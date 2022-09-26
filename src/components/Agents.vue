@@ -167,7 +167,9 @@
             this.editedItem.agent_id = doc.agent_id;
             this.rows.push(this.editedItem)
           }
-          this.close()
+          await this.initialize();
+          this.$parent.refresh();
+
         },
       },
     }

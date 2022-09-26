@@ -202,11 +202,11 @@
             } else {
               const data = await CustomerService.addCustomer(this.editedItem);
               console.log(data);
-              this.editItem.customer_id=data.customer_id;
               this.rows.push(this.editedItem);
-              //this.$parent.refresh();
             }
-            this.close()
+            this.close();
+            await this.initialize();
+            this.$parent.refresh();
           },
         },
       }

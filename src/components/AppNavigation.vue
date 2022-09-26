@@ -2,8 +2,9 @@
 <template>
     <span>
         <v-app-bar color="green darken-2"
+        
          >
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"> </v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="drawer = true" > </v-app-bar-nav-icon>
         <v-avatar :tile="true">
             <img :src="require('../../static/girl-scout-logo.jpeg')" alt="logo">
         </v-avatar>
@@ -20,8 +21,14 @@
         </v-toolbar-items>
         </v-app-bar>
 
-
-        <v-navigation-drawer app v-model="drawer" class="green lighten-4"  disable-resize-watcher>
+        <v-navigation-drawer app 
+            v-model="drawer"
+            fixed 
+            class="green lighten-4" 
+            expand-on-hover
+            absolute 
+            temporary
+        >
             <v-list>
                 <v-list-item v-for="(item, index) in items" :key="index" link @click="$router.push({ path: item.route }) ">
                     <v-list-item-content>
@@ -30,8 +37,6 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer> 
-
-        
     </span>
 </template>
 

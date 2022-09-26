@@ -198,7 +198,9 @@
               await ProductInventoryService.createInventoryOrder(this.editedItem);
               this.rows.push(this.editedItem)
             }
-            this.close()
+            this.close();
+            await this.initialize();
+            this.$parent.refresh();
           },
         },
       }
