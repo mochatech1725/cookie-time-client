@@ -9,9 +9,9 @@ const router = new Router({
     base: process.env.BASE_URL,
    routes: [
       {
-        path: '/',
+        path: '/home',
         name: 'home',
-        component: () => import('../views/HomeView.vue')
+        component: () => import('../components/Home.vue')
       },
       {
         path: '/products',

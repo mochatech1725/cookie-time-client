@@ -1,11 +1,9 @@
 <template>
     <v-container fluid fill-height class="home-hero" style="max-height: 100vh;" >
-        <!-- <v-layout justify-center align-center column pa-5>
-          
-        </v-layout> -->
         <v-card class="mx-auto" color="green lighten-4">
 
       <v-container fluid >
+        <v-card-text style="font-size:30px">Meet the Cookies</v-card-text>
         <v-row align="center" justify-center>
           <v-col
             v-for="card in cards"
@@ -13,8 +11,8 @@
             :cols="card.flex"
           >
             <v-card 
-            class="mx-auto my-12"
-            max-width="250" align="center" 
+            class="mx-auto my-10"
+            width="270" align="center" height="360"
             >
             <v-card-title v-text="card.title"></v-card-title>
               <template>
