@@ -26,25 +26,25 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.payment_date" label="Payment Date" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.payment_date" label="Payment Date" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.customer_id" label="Customer Id" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.customer_id" label="Customer Id" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.payment_id" label="Payment Id" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.payment_id" label="Payment Id" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.payment_amount" label="Amount" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.payment_amount" label="Amount" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.payment_type" label="Payment Type" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.payment_type" label="Payment Type" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.payment_method" label="Method" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.payment_method" label="Method" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.campaign_id" label="Campaign ID" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.campaign_id" label="Campaign ID" ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>

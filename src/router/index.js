@@ -8,10 +8,19 @@ const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
    routes: [
+    {
+      path: '/',
+      redirect: '/home'
+    },
       {
         path: '/home',
         name: 'home',
         component: () => import('../components/Home.vue')
+      },
+      {
+        path: '/reports',
+        name: 'reports',
+        component: () => import( '../components/Reports.vue')
       },
       {
         path: '/products',

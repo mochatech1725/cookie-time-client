@@ -27,13 +27,13 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_name" label="Product Name"></v-text-field>
+                      <v-text-field outlined v-model="editedItem.product_name" label="Product Name"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.product_price" label="Price" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.product_price" label="Price" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.year_introduced" label="Year" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.year_introduced" label="Year" ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -86,7 +86,7 @@
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Icon", width:"15%", value:"product_image", sortable: false},
+                { text: "", width:"15%", value:"product_image", sortable: false},
                 { text: "Product Name", value: "product_name", width:"20%" },
                 { text: "Price", value: "product_price", width:"5%" },
                 { text: "Year", value: "year_introduced", width:"5%" },

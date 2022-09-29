@@ -24,28 +24,28 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.first_name" label="First Name" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.first_name" label="First Name" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.last_name" label="Last Name" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.last_name" label="Last Name" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.address" label="Address" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.address" label="Address" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.city" label="City" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.city" label="City" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.state" label="State" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.state" label="State" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.zipcode" label="Zipcode" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.zipcode" label="Zipcode" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.email_address" label="Email" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.email_address" label="Email" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.phone_number" label="Phone" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.phone_number" label="Phone" ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>

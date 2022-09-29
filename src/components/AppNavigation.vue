@@ -15,6 +15,7 @@
             <v-btn text color="white" :to=" {name: 'products'}">Products</v-btn>
             <v-btn text color="white"  :to=" {name: 'customers'}">Customers</v-btn>
             <v-btn text color="white" :to=" {name: 'orders'}">Orders</v-btn>
+            <v-btn text color="white" :to=" {name: 'reports'}">Reports</v-btn>
             <v-btn text color="white" :to=" {name: 'inventory'}">Inventory</v-btn>
             <v-btn text color="white"  :to=" {name: 'payments'}">Payments</v-btn>
             <v-btn text color="white" :to=" {name: 'agents'}">Agents</v-btn>
@@ -52,6 +53,7 @@ export default {
                 { title: 'Products', route: "products" },
                 { title: 'Customers', route: "customers" },
                 { title: 'Orders', route: "orders" },
+                { title: 'Reports', route: "reports" },
                 { title: 'Inventory', route: "inventory" },
                 { title: 'Payments', route: "payments" },
                 { title: 'Agents', route: "agents" }

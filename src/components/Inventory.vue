@@ -26,37 +26,37 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.campaign_id" label="Campaign Id"></v-text-field>
+                      <v-text-field outlined v-model="editedItem.campaign_id" label="Campaign Id"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.thinmint" label="tm" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.thinmint" label="tm" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.trefoil" label="tf" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.trefoil" label="tf" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.samoa" label="sa" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.samoa" label="sa" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.dosido" label="dd" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.dosido" label="dd" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.tagalong" label="ta" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.tagalong" label="ta" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.lemonup" label="lu" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.lemonup" label="lu" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.toffee_tastic" label="tt" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.toffee_tastic" label="tt" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.smores" label="sm" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.smores" label="sm" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.adventureful" label="ad" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.adventureful" label="ad" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field v-model="editedItem.raspberry_rally" label="rr" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.raspberry_rally" label="rr" ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>

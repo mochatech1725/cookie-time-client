@@ -26,10 +26,10 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4" >
-                    <v-text-field v-model="editedItem.first_name" label="First Name" ></v-text-field>
+                    <v-text-field outlined v-model="editedItem.first_name" label="First Name" ></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4" >
-                    <v-text-field v-model="editedItem.last_name" label="Last Name" ></v-text-field>
+                    <v-text-field outlined v-model="editedItem.last_name" label="Last Name" ></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
