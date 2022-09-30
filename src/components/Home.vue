@@ -1,36 +1,36 @@
 <template>
-    <v-container fluid fill-height  >
-        <v-card class="mx-auto" color="green lighten-4">
+    <v-container fluid fill-height>
+        <v-card class="mx-auto" color="green lighten-4"  width="900" >
 
-      <v-container fluid  elevation="2">
-        <v-card-text style="font-size:30px">Meet the Cookies</v-card-text>
-        <v-row align="center" justify-center>
-          <v-col
-            v-for="card in cards"
-            :key="card.title"
-            :cols="card.flex"
-          >
-            <v-card 
-            class="mx-auto my-2"
-            width="270" align="center" height="360"
-            >
-            <v-card-title v-text="card.title"></v-card-title>
-              <template>
-                  <v-img
-                    :src="card.img"
-                    class="white--text"
-                    height="170px"
-                    width="170px" >
-                  </v-img>
-              </template>
-              <v-divider class="mx-4"></v-divider>
-              <div class="my-2 pa-4" > {{card.description}} </div>
+          <v-container fluid  elevation="2">
+            <v-card-text style="font-size:30px">Meet the Cookies</v-card-text>
+            <v-row align="center" justify-center>
+              <v-col
+                v-for="card in cards"
+                :key="card.title"
+                :cols="card.flex"
+              >
+                <v-card 
+                class="mx-auto my-2"
+                width="270" align="center" height="360"
+                >
+                <v-card-title v-text="card.title"></v-card-title>
+                  <template>
+                      <v-img
+                        :src="card.img"
+                        class="white--text"
+                        height="170px"
+                        width="170px" >
+                      </v-img>
+                  </template>
+                  <v-divider class="mx-4"></v-divider>
+                  <div class="my-2 pa-4" > {{card.description}} </div>
 
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
     </v-container>
   </template>
 

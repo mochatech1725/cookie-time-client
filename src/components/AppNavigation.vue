@@ -1,14 +1,13 @@
 // eslint-disable-next-line vue/no-v-for-template-key
 <template>
     <span>
-        <v-app-bar color="green darken-2"
-        
+        <v-app-bar color="green darken-2" shaped
          >
         <v-app-bar-nav-icon @click="drawer = true" > </v-app-bar-nav-icon>
         <v-avatar :tile="true">
             <img :src="require('../../static/girl-scout-logo.jpeg')" alt="logo">
         </v-avatar>
-        <v-toolbar-title class="ml-6" >{{appTitle}}</v-toolbar-title>
+        <v-toolbar-title class="ml-6" style="color:white">{{appTitle}}</v-toolbar-title>
         <v-spacer ></v-spacer>
         <v-toolbar-items class="elevation-2 hidden-sm-and-down" >
             <v-btn text color="white" :to=" {name: 'home'}">Home</v-btn>
@@ -46,7 +45,7 @@ export default {
     name: 'AppNavigation',
     data() {
         return {
-            appTitle: 'Cookie Sales Manager',
+            appTitle: 'Cookie Time Manager',
             drawer: false,
             items: [
                 { title: 'Home', route: "home" },
