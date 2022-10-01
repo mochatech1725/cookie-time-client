@@ -10,23 +10,25 @@
                 :key="card.title"
                 :cols="card.flex"
               >
-                <v-card 
-                class="mx-auto my-2"
-                width="270" align="center" height="360"
-                >
-                <v-card-title v-text="card.title"></v-card-title>
-                  <template>
-                      <v-img
-                        :src="card.img"
-                        class="white--text"
-                        height="170px"
-                        width="170px" >
-                      </v-img>
-                  </template>
-                  <v-divider class="mx-4"></v-divider>
-                  <div class="my-2 pa-4" > {{card.description}} </div>
-
-                </v-card>
+              <v-card class="mx-auto my-6" width="270" align="center" height="270" >
+                  <v-card-title v-text="card.title"></v-card-title>
+                    <template>
+                        <v-img :src="card.img" class="white--text" height="170px" width="170px" > </v-img>
+                    </template>
+                    <v-card-actions  class="pt-0">
+                        <v-btn text color="teal accent-4" @click="card.show = !card.show" > {{ card.show ? 'Close' : 'Description' }} </v-btn>
+                    </v-card-actions>
+                    <v-expand-transition>
+                      <v-card v-show="card.show" class="transition-fast-in-fast-out v-card--reveal" style="height: 60%;" >
+                        <v-card-text >
+                          <p>{{card.description}}</p>
+                        </v-card-text>
+                        <v-card-actions class="pt-0">
+                          <v-btn text color="teal accent-4" @click="card.show = !card.show" > {{ card.show ? 'Close' : 'Description' }} </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-expand-transition>
+                  </v-card>
               </v-col>
             </v-row>
           </v-container>
@@ -40,9 +42,7 @@
   export default {
     name: 'Home',
     data() {
-        return {
-          publicPath: process.env.BASE_URL,
-            cards: [
+      const cards = [
                 { title: 'Thin Mints',  img: require('../../static/cookie_thinmint.jpg'), flex: 4,
                description: 'Crispy wafers covered in chocolate coating made with natural oil of peppermint.'},
                 { title: 'Samoas', flex: 4, img: require('../../static/cookie_samoa.jpg'),
@@ -63,19 +63,25 @@
               description: 'Crunchy graham sandwich cookies with creamy chocolate and marshmallow filling. ' },
                 { title: 'Raspberry Rally', flex: 4, img: require('../../static/cookie_raspberry_rally.jpg'),
               description:'Thin, crispy cookie infused with raspberry flavor and dipped in chocolaty coating'  },
-            ]
+            ];
+
+        cards.forEach((c) => {
+          c.show = false
+        })
+        return {
+          reveal: false,
+          publicPath: process.env.BASE_URL,
+          cards
         };
     }
   }
   </script>
   
   <style scoped>
-  /* .home-hero {
-    background: url('../assets/rasprallybg.jpeg');
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-  } */
+.v-card--reveal {
+bottom: 0;
+opacity: 1 !important;
+position: absolute;
+width: 100%;
+}
   </style>
