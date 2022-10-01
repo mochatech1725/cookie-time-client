@@ -83,17 +83,14 @@
           mdi-delete
         </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize" >
-          Reset
-        </v-btn>
-      </template>
     </v-data-table>
   </template>
   
   <script>
       import { CustomerService } from '../services/customer.service.js';
-  
+      import { mapActions, mapState } from 'vuex'
+      import { store } from '../_store'
+
       export default {
         data: () => ({
           dialog: false,
@@ -135,6 +132,9 @@
         }),
     
         computed: {
+          ...mapState({
+            customers: state=>state.customer.customers
+          }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Customer' : 'Edit Customer'
           },
@@ -147,18 +147,17 @@
           dialogDelete (val) {
             val || this.closeDelete()
           },
+          customers(val) {
+            this.rows = val
+          }
         },
     
-        created () {
-          this.initialize()
+        created: async function() {
+          this.getCustomers()
         },
     
         methods: {
-          async initialize () {
-              this.rows =  await CustomerService.getCustomers();
-              console.log(this.rows);
-          },
-    
+          ...mapActions('customer', ['getCustomers']),
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)
@@ -205,10 +204,10 @@
               this.rows.push(this.editedItem);
             }
             this.close();
-            await this.initialize();
+            store.dispatch('customer/getCustomers')
             this.$parent.refresh();
           },
-        },
+        }
       }
     </script>
 

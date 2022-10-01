@@ -67,16 +67,12 @@
         mdi-delete
       </v-icon>
     </template>
-    <template v-slot:no-data>
-      <v-btn color="primary" @click="initialize" >
-        Reset
-      </v-btn>
-    </template>
   </v-data-table>
 </template>
 
 <script>
     import { AgentService } from '../services/agent.service.js';
+    import { mapActions, mapState } from 'vuex'
 
     export default {
       data: () => ({
@@ -101,6 +97,9 @@
       }),
   
       computed: {
+        ...mapState({
+            agents: state=>state.agent.agents
+          }),
         formTitle () {
           return this.editedIndex === -1 ? 'New Agent' : 'Edit Agent'
         },
@@ -113,17 +112,17 @@
         dialogDelete (val) {
           val || this.closeDelete()
         },
+        agents (val) {
+          this.rows = val
+        }
       },
   
-      created () {
-        this.initialize()
+      created: async function () {
+        this.getAgents()
       },
   
       methods: {
-        async initialize () {
-            this.rows =  await AgentService.getAgents();
-        },
-  
+        ...mapActions('agent', ['getAgents']),
         editItem (item) {
           this.editedIndex = this.rows.indexOf(item)
           this.editedItem = Object.assign({}, item)
@@ -167,7 +166,6 @@
             this.editedItem.agent_id = doc.agent_id;
             this.rows.push(this.editedItem)
           }
-          await this.initialize();
           this.$parent.refresh();
 
         },

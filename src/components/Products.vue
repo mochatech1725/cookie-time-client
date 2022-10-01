@@ -71,17 +71,16 @@
         <v-icon small class="mr-2" @click="editItem(item)" > mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)" > mdi-delete </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize" > No Products </v-btn>
-      </template>
     </v-data-table>
   </template>
   
   <script>
 
     import { ProductService } from '../services/product.service.js';
+    import { mapActions, mapState } from 'vuex'
+    import { store } from '../_store'
 
-      export default {
+    export default {
         data: () => ({
           dialog: false,
           dialogDelete: false,
@@ -104,6 +103,9 @@
           },
         }),
         computed: {
+          ...mapState({
+            products: state=>state.product.products
+          }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
           }
@@ -116,16 +118,17 @@
           dialogDelete (val) {
             val || this.closeDelete()
           },
+          products(val) {
+            this.rows = val
+          }
         },
     
-        created () {
-          this.initialize()
+        created: async function() {
+          this.getProducts()
         },
     
         methods: {
-          async initialize () {
-              this.rows =  await ProductService.getProducts();
-          },
+          ...mapActions('product', ['getProducts']),
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)
@@ -170,7 +173,7 @@
               this.rows.push(this.editedItem)
             }
             this.close();
-            await this.initialize();
+            store.dispatch('products/getProducts')
             this.$parent.refresh();
           },
         },

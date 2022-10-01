@@ -82,11 +82,6 @@
           mdi-delete
         </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize" >
-          Reset
-        </v-btn>
-      </template>
     </v-data-table>
   </template>
   
@@ -138,14 +133,9 @@
         },
     
         created () {
-          this.initialize()
         },
     
         methods: {
-          async initialize () {
-            //   this.rows =  await OrderService.getOrders();
-            //   console.log(this.rows);
-          },
     
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
@@ -187,7 +177,6 @@
               this.rows.push(this.editedItem)
             }
             this.close();
-            await this.initialize();
             this.$parent.refresh();
           },
         },

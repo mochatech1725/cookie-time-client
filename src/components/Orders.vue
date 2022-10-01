@@ -104,16 +104,12 @@
           mdi-delete
         </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize" >
-          Reset
-        </v-btn>
-      </template>
     </v-data-table>
   </template>
   
   <script> 
     import { OrderService } from '../services/order.service.js';
+    import { mapActions, mapState } from 'vuex'
   
       export default {
         data: () => ({
@@ -149,9 +145,12 @@
         }),
     
         computed: {
+          ...mapState({
+            orders: state=>state.order.orders
+          }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Order' : 'Edit Order'
-          },
+          }
         },
     
         watch: {
@@ -161,16 +160,17 @@
           dialogDelete (val) {
             val || this.closeDelete()
           },
+          orders(val) {
+            this.rows = val
+          }
         },
     
-        created () {
-          this.initialize()
+        created: async function () {
+          this.getOrders("631901e870fff299a91bc25a")
         },
     
         methods: {
-          async initialize () {
-            this.rows =  await OrderService.getOrders("631901e870fff299a91bc25a");
-          },
+          ...mapActions('order', ['getOrders']),
     
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
@@ -216,7 +216,6 @@
               this.rows.push(this.editedItem)
             }
             this.close();
-            await this.initialize();
             this.$parent.refresh();
           },
         },

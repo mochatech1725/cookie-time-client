@@ -94,17 +94,13 @@
           mdi-delete
         </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize" >
-          Reset
-        </v-btn>
-      </template>
     </v-data-table>
   </template>
   
   <script> 
      import { ProductInventoryService } from '../services/product_inventory.service.js';
-  
+     import { mapActions, mapState } from 'vuex'
+
       export default {
         data: () => ({
           dialog: false,
@@ -134,9 +130,12 @@
         }),
     
         computed: {
+          ...mapState({
+            product_inventory: state=>state.inventory.product_inventory
+          }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Inventory' : 'Edit Inventory'
-          },
+          }
         },
     
         watch: {
@@ -146,17 +145,17 @@
           dialogDelete (val) {
             val || this.closeDelete()
           },
+          product_inventory(val) {
+            this.rows = val
+          }
         },
     
-        created () {
-          this.initialize()
+        created: async function () {
+          this.getInventory("631901e870fff299a91bc25a")
         },
     
         methods: {
-          async initialize () {
-            this.rows =  await ProductInventoryService.getInventory();
-          },
-    
+          ...mapActions('inventory', ['getInventory']),
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)
@@ -199,7 +198,6 @@
               this.rows.push(this.editedItem)
             }
             this.close();
-            await this.initialize();
             this.$parent.refresh();
           },
         },
