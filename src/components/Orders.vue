@@ -25,9 +25,6 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field outlined v-model="editedItem.campaign_id" label="Campaign Id" ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" >
                       <v-text-field outlined v-model="editedItem.customer_id" label="Customer Id" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
@@ -119,7 +116,6 @@
           dialog: false,
           dialogDelete: false,
           headers: [
-                { text: "Campaign", value: "campaign_id" },
                 { text: "Order Date", value: "order_date" },
                 { text: "Order Id", value: "order_id" },
                 { text: "Customer Id", value: "customer_id" },
