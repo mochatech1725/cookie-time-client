@@ -1,37 +1,32 @@
 <template>
+  <v-container fluid pt-10 class="d-flex align-center justify-center">
+      <v-card fluid width="400px" >
+        <h1 align="center" style="color:green">Current Sales Totals</h1>
+        <v-simple-table class="mytable" fixed-header >
+          <template v-slot:default>
+            <thead >
+              <tr>
+                <th class="text-left"> Product </th>
+                <th class="text-right"> Total Sold </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="item in sales_totals.product_totals"
+                :key="item.productName"
+              >
+                <td >{{ item.productName }}</td>
+                <td align="right">{{ item.qty }}</td>
+              </tr>
+              <tr>
+                <td >TOTAL</td>
+                <td align="right">{{ sales_totals.total_sold}}</td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-card>
 
-  <v-container fluid fill-height  >
-      <v-card class="mx-auto" >
-
-        <v-card fluid width="500px" color="green lighten-4">
-          <h1 align="center">Current Totals</h1>
-          <v-simple-table class="mytable" fixed-header >
-            <template v-slot:default>
-              <thead >
-                <tr>
-                  <th class="text-left"> Product </th>
-                  <th class="text-right"> Total Sold </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="item in sales_totals.product_totals"
-                  :key="item.productName"
-                >
-                  <td >{{ item.productName }}</td>
-                  <td align="right">{{ item.qty }}</td>
-                </tr>
-                <tr>
-                  <td >TOTAL</td>
-                  <td align="right">{{ sales_totals.total_sold}}</td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-        </v-card>
-        <v-divider class="mx-4"></v-divider>
-
-    </v-card>
   </v-container>
 
 </template>

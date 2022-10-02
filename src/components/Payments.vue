@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
+  <v-container fluid pt-10 class="justify-top" >
     <v-data-table
       :headers="headers"
       :items="rows"
@@ -83,6 +84,8 @@
         </v-icon>
       </template>
     </v-data-table>
+  </v-container>  
+
   </template>
   
   <script> 

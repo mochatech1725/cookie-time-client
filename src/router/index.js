@@ -10,13 +10,13 @@ const router = new Router({
    routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/products'
     },
-      {
-        path: '/home',
-        name: 'home',
-        component: () => import('../components/Home.vue')
-      },
+      // {
+      //   path: '/home',
+      //   name: 'home',
+      //   component: () => import('../components/Home.vue')
+      // },
       {
         path: '/reports',
         name: 'reports',
@@ -51,6 +51,11 @@ const router = new Router({
         path: '/customers',
         name: 'customers',
         component: () => import('../components/Customers.vue')
+      },
+      {
+        path: '/campaigns',
+        name: 'campaigns',
+        component: () => import('../components/Campaign.vue')
       }
     ]
   });

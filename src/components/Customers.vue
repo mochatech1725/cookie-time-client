@@ -1,16 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <v-data-table
-      :headers="headers"
-      :items="rows"
-      sort-by="first_name"
-      class="elevation-1 mytable" 
-    >
+  <v-container fluid pt-10 d-flex align-center justify-center >
+    <v-card >
+      <v-data-table :headers="headers" :items="rows" sort-by="first_name" class="elevation-1 mytable" >
       <template v-slot:top>
         <v-toolbar flat >
           <v-toolbar-title>Customers</v-toolbar-title>
           <v-divider class="mx-4" inset vertical ></v-divider>
            <v-spacer></v-spacer>
+
           <v-dialog v-model="dialog" max-width="500px" >
             <template v-slot:activator="{ on, attrs }">
               <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Customer </v-btn>
@@ -62,6 +60,7 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
+
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
@@ -73,6 +72,7 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
+          
         </v-toolbar>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
@@ -84,6 +84,10 @@
         </v-icon>
       </template>
     </v-data-table>
+    </v-card>
+
+  </v-container>
+
   </template>
   
   <script>
@@ -97,14 +101,14 @@
           dialogDelete: false,
           headers: [
                 { text: "Customer Id", value: "customer_id", width:"3%" },
-                { text: "First Name", value: "first_name", width:"15%" },
-                { text: "Last Name", value: "last_name", width:"15%" },
-                { text: "Address", value: "address", width:"15%" },
-                { text: "City", value: "city", width:"10%" },
-                { text: "State", value: "state", width:"5%" },
-                { text: "Zipcode", value: "zipcode", width:"5%" },
+                { text: "First Name", value: "first_name", width:"12%" },
+                { text: "Last Name", value: "last_name", width:"16%" },
+                { text: "Address", value: "address", width:"23%" },
+                { text: "City", value: "city", width:"8%" },
+                { text: "State", value: "state", width:"1%" },
+                { text: "Zipcode", value: "zipcode", width:"1%" },
                 { text: "Email", value: "email_address", width:"10%" },
-                { text: "Phone", value: "phone_number", width:"10%" },
+                { text: "Phone", value: "phone_number", width:"16%" },
                 { text: "Actions", value: "actions", sortable: false },
           ],
           rows: [],

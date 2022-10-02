@@ -9,7 +9,7 @@ export class CustomerService {
           return response?.data;
        }).catch(err => {
           console.log(err);
-          return [];
+          return {};
        } );
   }
 

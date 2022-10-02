@@ -1,10 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <v-data-table
-      :headers="headers"
-      :items="rows"
-      class="elevation-1 mytable"
-    >
+  <v-container fluid pt-10 class="justify-top" >
+    <v-data-table disable-sort :headers="headers" :items="rows" class="elevation-1 mytable" >
       <template v-slot:top>
         <v-toolbar flat >
           <v-toolbar-title>Product Inventory</v-toolbar-title>
@@ -12,9 +9,7 @@
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" >
-                New Inventory
-              </v-btn>
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" > New Inventory </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -94,6 +89,8 @@
         </v-icon>
       </template>
     </v-data-table>
+  </v-container>  
+
   </template>
   
   <script> 

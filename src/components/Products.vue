@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template >
-  <v-container fluid fill-height  class="d-flex align-center justify-center"  >
+  <v-container fluid pt-10 class="d-flex align-center justify-center"  >
     <v-card  fluid width="600px" color="green lighten-4" min-width="600px">
       <v-data-table
         :headers="headers"
@@ -67,7 +67,7 @@
           </v-toolbar>
         </template>
         <template v-slot:[`item.product_image`]="{ item }">
-            <img :src="require('../assets/product-images/' + item.product_image)" style="width: 50px; height: 50px">
+            <img :src="require('../assets/product-images/' + item.product_image)" style="width: 60px; height: 60px">
         </template>
                 
         <template v-slot:[`item.actions`]="{ item }">
