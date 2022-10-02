@@ -24,11 +24,18 @@
 
 <script>
 import AppNavigation from '@/components/AppNavigation';
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
       AppNavigation
+  },
+  methods: {
+      ...mapActions('campaign', ['getCampaigns'])
+  },
+  created: async function () {
+    this.getCampaigns()
   }
 };
 </script>

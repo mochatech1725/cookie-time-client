@@ -7,7 +7,7 @@ const state = {
 
 const actions = {
     getCampaigns({commit}) {
-        console.log('getCampaigns')
+        console.log('campaign module getCampaigns')
         CampaignService.getCampaigns().catch(() => [])
         .then(campaigns => {
             if (campaigns.length) {

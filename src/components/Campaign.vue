@@ -116,7 +116,7 @@
             }
         },
 
-        created: async function() {
+        mounted: async function() {
             this.getCampaigns()
         },
 

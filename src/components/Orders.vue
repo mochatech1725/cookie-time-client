@@ -165,7 +165,7 @@
           }
         },
     
-        created: async function () {
+        mounted: async function () {
           this.getOrders(this.currentCampaignId)
         },
     
