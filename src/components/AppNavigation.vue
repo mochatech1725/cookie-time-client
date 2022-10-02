@@ -45,7 +45,7 @@ export default {
     name: 'AppNavigation',
     data() {
         return {
-            appTitle: 'Cookie Sales System',
+            appTitle: 'Cookie Time Manager',
             drawer: false,
             items: [
                 { title: 'Products', route: "products" },
