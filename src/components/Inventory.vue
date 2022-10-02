@@ -127,7 +127,8 @@
     
         computed: {
           ...mapState({
-            product_inventory: state=>state.inventory.product_inventory
+            product_inventory: state=>state.inventory.product_inventory,
+            currentCampaignId: state=>state.campaign.currentCampaignId
           }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Inventory' : 'Edit Inventory'
@@ -147,11 +148,12 @@
         },
     
         created: async function () {
-          this.getInventory("631901e870fff299a91bc25a")
+          this.getInventory(this.currentCampaignId)
         },
     
         methods: {
           ...mapActions('inventory', ['getInventory']),
+          ...mapActions('campaign', ['getCampaigns']),
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)

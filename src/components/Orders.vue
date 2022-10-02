@@ -149,7 +149,8 @@
     
         computed: {
           ...mapState({
-            orders: state=>state.order.orders
+            orders: state=>state.order.orders,
+            currentCampaignId: state=>state.campaign.currentCampaignId
           }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Order' : 'Edit Order'
@@ -169,11 +170,12 @@
         },
     
         created: async function () {
-          this.getOrders("631901e870fff299a91bc25a")
+          this.getOrders(this.currentCampaignId)
         },
     
         methods: {
           ...mapActions('order', ['getOrders']),
+          ...mapActions('campaign', ['getCampaigns']),
     
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)

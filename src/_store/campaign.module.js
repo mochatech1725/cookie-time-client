@@ -1,7 +1,8 @@
 import { CampaignService } from '../services/campaign.service.js'
 
 const state = {
-    campaigns: []
+    campaigns: [],
+    currentCampaignId: ''
 }
 
 const actions = {
@@ -9,6 +10,9 @@ const actions = {
         console.log('getCampaigns')
         CampaignService.getCampaigns().catch(() => [])
         .then(campaigns => {
+            if (campaigns.length) {
+                commit('set', {key: 'currentCampaignId', value: campaigns[0].campaign_id})
+            }
             commit('set', {key: 'campaigns', value: campaigns})
         });
     }
