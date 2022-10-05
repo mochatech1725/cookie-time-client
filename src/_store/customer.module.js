@@ -5,11 +5,11 @@ const state = {
 }
 
 const actions = {
-    getCustomers({commit}) {
-       CustomerService.getCustomers().catch(() => [])
-       .then(customers => {
-           commit('set', {key: 'customers', value: customers})
-       });
+    async getCustomers({commit}) {
+       return CustomerService.getCustomers()
+        .then(customers => {
+            commit('set', {key: 'customers', value: customers})
+        }).catch(() => [])
    }
 }
 

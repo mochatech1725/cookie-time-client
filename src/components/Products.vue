@@ -171,7 +171,6 @@
             if (this.editedIndex > -1) {
               Object.assign(this.rows[this.editedIndex], this.editedItem)
               await ProductService.updateCustomer(this.editedItem);
-
             } else {
               const data = await ProductService.updateProduct(this.editedItem);
               console.log(data)

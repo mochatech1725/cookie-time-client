@@ -5,11 +5,10 @@ const state = {
 };
 
 const actions = {
-     getInventory({commit}, campaign_id) {
-        ProductInventoryService.getInventory(campaign_id).catch(() => [])
-        .then(inventory => {
-            commit('set', {key: 'product_inventory', value:inventory})
-        });
+    
+     async getInventory({commit}, campaign_id) {
+        const inventory = await ProductInventoryService.getInventory(campaign_id)
+        commit('set', {key: 'product_inventory', value:inventory})
     }
 }
 

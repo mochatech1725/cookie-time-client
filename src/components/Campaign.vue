@@ -117,7 +117,7 @@
         },
 
         mounted: async function() {
-            this.getCampaigns()
+          await this.getCampaigns()
         },
 
         methods: {

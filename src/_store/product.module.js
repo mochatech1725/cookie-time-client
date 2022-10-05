@@ -5,11 +5,9 @@ const state = {
 }
 
 const actions = {
-    getProducts({commit}) {
-        ProductService.getProducts().catch(() => [])
-        .then(products => {
-            commit('set', {key: 'products', value: products})
-        });
+    async getProducts({commit}) {
+        const products  = await ProductService.getProducts()
+        commit('set', {key: 'products', value: products})
     }
 }
 

@@ -64,8 +64,6 @@
         },
     
         created () {
-            console.log('***DEBUG created')
-          //this.initialize()
         },
     
         methods: {

@@ -1,15 +1,18 @@
 import { OrderService } from '../services/order.service.js';
 
 const state = {
-    orders: []
+    orders: [],
+    agent_orders: []
 }
 
 const actions = {
-    getOrders({commit}, campaignId) {
-        OrderService.getOrders(campaignId).catch(() => [])
-        .then(orders => {
-            commit('set', {key: 'orders', value: orders})
-        });
+    async getAllCustomerOrders({commit}, campaignId) {
+        const orders = await OrderService.getAllCustomerOrders(campaignId)
+        commit('set', {key: 'orders', value: orders})
+    },
+    async getAllAgentOrders({commit}, campaignId) {
+        const orders = await OrderService.getAllAgentOrders(campaignId)
+        commit('set', {key: 'agent_orders', value: orders})
     }
 }
 

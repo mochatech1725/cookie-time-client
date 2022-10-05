@@ -9,7 +9,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat >
-          <v-toolbar-title>Customer Orders</v-toolbar-title>
+          <v-toolbar-title>Agent Orders</v-toolbar-title>
           <v-divider class="mx-4" inset vertical ></v-divider>
            <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px" >
@@ -25,7 +25,7 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4" >
-                      <v-text-field outlined v-model="editedItem.customer_id" label="Customer Id" ></v-text-field>
+                      <v-text-field outlined v-model="editedItem.agent_id" label="Agent Id" ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4" >
                       <v-text-field outlined v-model="editedItem.order_id" label="Order Id" ></v-text-field>
@@ -113,12 +113,13 @@
   
       export default {
         data: () => ({
+          currentCampaignId:'',
           dialog: false,
           dialogDelete: false,
           headers: [
                 { text: "Order Date", value: "order_date" },
                 { text: "Order Id", value: "order_id" },
-                { text: "Customer Id", value: "customer_id" },
+                { text: "Agent Id", value: "agent_id" },
                 { text: "TM", value: "thinmint" },
                 { text: "TF", value: "trefoil" },
                 { text: "SA", value: "samoa" },
@@ -145,8 +146,7 @@
     
         computed: {
           ...mapState({
-            orders: state=>state.order.orders,
-            currentCampaignId: state=>state.campaign.currentCampaignId
+            orders: state=>state.order.orders
           }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Order' : 'Edit Order'
@@ -166,11 +166,12 @@
         },
     
         mounted: async function () {
-          this.getOrders(this.currentCampaignId)
+          this.currentCampaignId = await this.getCurrentCampaignId();
+          await this.getAllAgentOrders(this.currentCampaignId)
         },
     
         methods: {
-          ...mapActions('order', ['getOrders']),
+          ...mapActions('order', ['getAllAgentOrders']),
           ...mapActions('campaign', ['getCampaigns']),
     
           editItem (item) {
@@ -186,7 +187,7 @@
           },
     
           async deleteItemConfirm () {
-            const data = await OrderService.deleteCustomerOrder(this.editedItem.order_id, this.editedItem.customer_id);
+            const data = await OrderService.deleteAgentOrder(this.editedItem.order_id, this.editedItem.agent_id);
             console.log(data);
             this.rows.splice(this.editedIndex, 1)
             this.closeDelete()
@@ -211,9 +212,9 @@
           async save () {
             if (this.editedIndex > -1) {
               Object.assign(this.rows[this.editedIndex], this.editedItem)
-              await OrderService.updateCustomerOrder(this.editedItem)
+              await OrderService.updateAgentOrder(this.editedItem)
             } else {
-              await OrderService.createCustomerOrder(this.editedItem)
+              await OrderService.createAgentOrder(this.editedItem)
               this.rows.push(this.editedItem)
             }
             this.close();

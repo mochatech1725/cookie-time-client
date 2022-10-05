@@ -99,6 +99,7 @@
 
       export default {
         data: () => ({
+          currentCampaignId:'',
           dialog: false,
           dialogDelete: false,
           headers: [
@@ -127,8 +128,7 @@
     
         computed: {
           ...mapState({
-            product_inventory: state=>state.inventory.product_inventory,
-            currentCampaignId: state=>state.campaign.currentCampaignId
+            product_inventory: state=>state.inventory.product_inventory
           }),
           formTitle () {
             return this.editedIndex === -1 ? 'New Inventory' : 'Edit Inventory'
@@ -148,12 +148,13 @@
         },
     
         created: async function () {
-          this.getInventory(this.currentCampaignId)
+          this.currentCampaignId = await this.getCurrentCampaignId();
+          await this.getInventory(this.currentCampaignId)
         },
     
         methods: {
           ...mapActions('inventory', ['getInventory']),
-          ...mapActions('campaign', ['getCampaigns']),
+          ...mapActions('campaign', ['getCurrentCampaignId']),
           editItem (item) {
             this.editedIndex = this.rows.indexOf(item)
             this.editedItem = Object.assign({}, item)

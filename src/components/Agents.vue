@@ -117,9 +117,10 @@
           this.rows = val
         }
       },
-  
+
       created: async function () {
-        this.getAgents()
+
+        await this.getAgents()
       },
   
       methods: {

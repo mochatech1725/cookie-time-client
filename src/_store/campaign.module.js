@@ -6,15 +6,27 @@ const state = {
 }
 
 const actions = {
-    getCampaigns({commit}) {
-        console.log('campaign module getCampaigns')
-        CampaignService.getCampaigns().catch(() => [])
-        .then(campaigns => {
-            if (campaigns.length) {
-                commit('set', {key: 'currentCampaignId', value: campaigns[0].campaign_id})
-            }
-            commit('set', {key: 'campaigns', value: campaigns})
-        });
+    async getCampaigns({commit}) {
+        return CampaignService.getCampaigns()
+            .then(campaigns => {
+                commit('set', {key: 'campaigns', value: campaigns})
+                return(campaigns);
+            }).catch(() => {
+                return([])
+            })
+    },    
+    async getCurrentCampaignId({commit}) {
+        return CampaignService.getCampaigns()
+            .then(campaigns => {
+                if (campaigns.length) {
+                    commit('set', {key: 'currentCampaignId', value: campaigns[0].campaign_id})
+                    return(campaigns[0].campaign_id)
+                } else {
+                    return('');
+                }
+            }).catch(() => {
+                return([])
+            })
     }
 }
 

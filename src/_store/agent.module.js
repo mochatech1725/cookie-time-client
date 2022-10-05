@@ -6,11 +6,9 @@ const state = {
 }
 
 const actions = {
-    getAgents({commit}) {
-        AgentService.getAgents().catch(() => [])
-        .then(agents => {
-            commit('set', {key: 'agents', value: agents})
-        });
+    async getAgents({commit}) {
+        const agents = await AgentService.getAgents()
+        commit('set', {key: 'agents', value: agents})
     }
 }
 

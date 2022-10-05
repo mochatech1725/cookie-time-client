@@ -32,10 +32,10 @@ export default {
       AppNavigation
   },
   methods: {
-      ...mapActions('campaign', ['getCampaigns'])
+      ...mapActions('campaign', ['getCurrentCampaignId'])
   },
   created: async function () {
-    this.getCampaigns()
+    this.getCurrentCampaignId()
   }
 };
 </script>
