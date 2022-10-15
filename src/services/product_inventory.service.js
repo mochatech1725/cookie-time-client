@@ -9,9 +9,9 @@ export class ProductInventoryService {
       let query;
 
       if (!campaign_id) {
-         query = `${SERVER_BASE_URL}/product_inventory/get_inventory`
+         query = `${SERVER_BASE_URL}/product_inventory/inventory`
       } else {
-         query = `${SERVER_BASE_URL}/product_inventory/get_inventory?campaign_id=${campaign_id}`;
+         query = `${SERVER_BASE_URL}/product_inventory/inventory?campaign_id=${campaign_id}`;
       }
       const response = await axios.get(query)
       return(response? response?.data : []);

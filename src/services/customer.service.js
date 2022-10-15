@@ -12,7 +12,7 @@ export class CustomerService {
 
     static async getCustomers() {
 
-      const response = await axios.get(`${SERVER_BASE_URL}/customer/get_customers`)
+      const response = await axios.get(`${SERVER_BASE_URL}/customer/customers`)
       return(response? response?.data : []);
     }
 

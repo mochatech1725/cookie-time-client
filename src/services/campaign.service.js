@@ -11,7 +11,7 @@ export class CampaignService {
 
    static async getCampaigns() {
 
-      const response = await axios.get(`${SERVER_BASE_URL}/campaign/get_campaigns`)
+      const response = await axios.get(`${SERVER_BASE_URL}/campaign/campaigns`)
       return(response? response?.data : []);
    }
 

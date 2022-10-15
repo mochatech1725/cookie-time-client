@@ -5,7 +5,7 @@ export class ReportsService {
 
    static async generateCurrentSalesReport(campaign_id) {
 
-      const response = await axios.get(`${SERVER_BASE_URL}/reports/get_current_sales?campaign_id=${campaign_id}`)
+      const response = await axios.get(`${SERVER_BASE_URL}/reports/current_sales?campaign_id=${campaign_id}`)
       return(response? response?.data : {});
 
    }

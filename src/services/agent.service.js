@@ -5,15 +5,15 @@ export class AgentService
  {
 
     static async getAgents() {
-      console.log(`getAgents route: ${SERVER_BASE_URL}/agent/get_agents`);
+      console.log(`getAgents route: ${SERVER_BASE_URL}/agent/agents`);
  
-      const response = await axios.get(`${SERVER_BASE_URL}/agent/get_agents`)
+      const response = await axios.get(`${SERVER_BASE_URL}/agent/agents`)
       return(response? response?.data : []);
     }
 
     static async getAgent(first_name, last_name) {
 
-      const response = await axios.get(`${SERVER_BASE_URL}/agent/get_agent?first_name=${first_name}&last_name=${last_name}`)
+      const response = await axios.get(`${SERVER_BASE_URL}/agent/agent?first_name=${first_name}&last_name=${last_name}`)
       return(response? response?.data : {});
     }
 

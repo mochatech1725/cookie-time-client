@@ -23,13 +23,13 @@ export class OrderService {
 
    static async getCustomerOrders(campaign_id,customer_id) {
       
-      const response = await axios.get(`${SERVER_BASE_URL}/customer_order/get_customer_orders?campaign_id=${campaign_id}&customer_id=${customer_id}`)
+      const response = await axios.get(`${SERVER_BASE_URL}/customer_order/customer_orders?campaign_id=${campaign_id}&customer_id=${customer_id}`)
       return(response? response?.data : []);
    }
 
    static async getAllCustomerOrders(campaign_id) {
 
-      const response = await axios.get(`${SERVER_BASE_URL}/customer_order/get_orders?campaign_id=${campaign_id}`)
+      const response = await axios.get(`${SERVER_BASE_URL}/customer_order/orders?campaign_id=${campaign_id}`)
       const orders = response?.data;
       if (orders) {
          return CustomerService.getCustomers().catch(() => [])
@@ -67,13 +67,13 @@ export class OrderService {
 
     static async getAgentOrders(campaign_id,agent_id) {
 
-        const response = await axios.get(`${SERVER_BASE_URL}/agent_order/get_agent_orders?campaign_id=${campaign_id}&agent_id=${agent_id}`)
+        const response = await axios.get(`${SERVER_BASE_URL}/agent_order/agent_orders?campaign_id=${campaign_id}&agent_id=${agent_id}`)
         return(response? response?.data : []);
     }
 
     static async getAllAgentOrders(campaign_id) {
 
-      const response = await axios.get(`${SERVER_BASE_URL}/agent_order/get_orders?campaign_id=${campaign_id}`)
+      const response = await axios.get(`${SERVER_BASE_URL}/agent_order/orders?campaign_id=${campaign_id}`)
       return(response? response?.data : []);
    }
 

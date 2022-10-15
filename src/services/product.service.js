@@ -11,7 +11,7 @@ export class ProductService {
   }
 
     static async getProducts() {
-      const response = await axios.get(`${SERVER_BASE_URL}/product/get_products`)
+      const response = await axios.get(`${SERVER_BASE_URL}/product/products`)
       return(response? response?.data : []);
     }
 }
